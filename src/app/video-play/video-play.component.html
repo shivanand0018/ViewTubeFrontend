@@ -1,0 +1,8 @@
+<div class="video">
+    <mat-card id="image-viewer" *ngIf="imageObservable | async; let video" style="margin-right: 0px;">
+        <youtube-player [videoId]="video.id"></youtube-player>
+        <h1>{{video.snippet.title}}</h1>
+        <p>{{video.snippet.channelTitle}}</p>
+        <p>{{video.statistics.viewCount}} views. {{video.snippet.relativeTime}}</p>
+    </mat-card>
+</div>

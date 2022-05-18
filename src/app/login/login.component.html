@@ -1,0 +1,11 @@
+<div id="login">
+    <h3>Login here with UserName & Password...</h3>
+    <label for="UserName">UserName</label>
+    <input type="email" #username placeholder="Enter emailId"><br><br>
+    <label for="password">Password</label>
+    <input type="password" #password placeholder="Enter Password"><br>
+    <br>
+    
+    <button color="primary" mat-raised-button (click)="login(username.value,password.value)" >Login</button>
+    <button color="primary" mat-raised-button routerLink="register1">Sign Up</button>
+</div>

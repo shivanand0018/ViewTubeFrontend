@@ -1,0 +1,125 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>
+          <mat-icon>upload</mat-icon>UPLOAD VIDEO..
+        </h1>
+  
+        <form #registerForm="ngForm">
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" class="form-control" [(ngModel)]="formData.title" name="title" #title="ngModel" required />
+          </div>
+          <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert alert-danger">
+            <div *ngIf="title.errors?.['required']">
+              title is required
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="url">Video Url</label>
+            <input type="text" class="form-control" [(ngModel)]="formData.url" name="url" #url="ngModel" required />
+          </div>
+          <div *ngIf="url.invalid && (url.dirty || url.touched)" class="alert alert-danger">
+            <div *ngIf="url.errors?.['required']">
+              Url is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="textarea">Description</label>
+            <textarea type="text" class="form-control" [(ngModel)]="formData.textarea" name="textarea" #textarea="ngModel"
+              placeholder="maxlength should not be above 20 characters" required maxlength="20" required></textarea>
+          </div>
+          <div *ngIf="textarea.invalid && (textarea.dirty || textarea.touched)" class="alert alert-danger">
+            <div *ngIf="textarea.errors?.['required']">
+              Description is required
+            </div>
+            <div *ngIf="textarea.errors?.['maxlength']">
+              Description is above 20 characters
+            </div>
+          </div>
+          <label for="channeltitle">Channel Title</label>
+          <input type="text" class="form-control" [(ngModel)]="formData.channeltitle" name="channeltitle"
+            #channeltitle="ngModel" required />
+          <div *ngIf="channeltitle.invalid && (channeltitle.dirty || channeltitle.touched)" class="alert alert-danger">
+            <div *ngIf="channeltitle.errors?.['required']">
+              Channel Title is required
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label for="duration">Duration</label>
+            <input type="time" class="form-control" [(ngModel)]="formData.duration" name="duration" #duration="ngModel"
+              placeholder="HH:MM:SS" required />
+          </div>
+          <br>
+          <br>
+          <label class="example-margin">Audience Type:</label>
+          <mat-radio-group [(ngModel)]="formData.audienceType" class="form-control" name="audienceType" #audienceType="ngModel">
+            <mat-radio-button class="example-margin" value="Yes, it's made for kids">Yes, it's made for kids</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Not for kids">Not for kids</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <label class="example-margin">Age Restriction:</label>
+          <mat-radio-group [(ngModel)]="formData.restriction" class="form-control" name="restriction" #restriction="ngModel">
+            <mat-radio-button class="example-margin" value="Yes, Restrict my videos to viewers over 18">Yes, Restrict my videos to viewers over 18
+            </mat-radio-button>
+            <mat-radio-button class="example-margin" value="No, don't restrict my videos to viewers over 18">No, don't restrict my videos to viewers over 18
+            </mat-radio-button>
+          </mat-radio-group>
+          <br>
+  
+          <br>
+          <label for="recordingdate">Recording Date:</label>
+          <input type="date" [(ngModel)]="formData.recordingdate" name="recordingdate" class="form-control" #recordingdate="ngModel">
+          <br>
+          <br>
+          <label for="location">Video Location:</label>
+          <select name="location" class="form-control" [(ngModel)]="formData.location" #location="ngModel">
+            <option>Select</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Yadavali">Yadavali</option>
+          </select>
+          <br>
+          <br>
+          <label for="license">License:</label>
+          <select name="license" class="form-control" [(ngModel)]="formData.license" #license="ngModel">
+            <option>Select</option>
+            <option value="standard">Standard Viewtube License</option>
+            <option value="craetive">Creative Common License</option>
+          </select>
+          <br>
+          <br>
+          <label for="distribution">Distribution:</label>
+          <select name="distribution" class="form-control" [(ngModel)]="formData.distribution" #distribution="ngModel">
+            <option>Select</option>
+            <option value="everywhere">Everywhere</option>
+            <option value="monetizedplatforms">Make this video available only on monetized platforms</option>
+          </select><br>
+          <br>
+          <label for="videoCategory">Video Category:</label>
+          <select name="videoCategory" class="form-control" [(ngModel)]="formData.videoCategory" #videoCategory="ngModel">
+            <option>Select</option>
+            <option value="film">Film & Animation</option>
+            <option value="autos">Autos & Vehicles</option>
+          </select>
+          <br>
+          <br>
+          <label for="visibilty">Visibility:</label>
+          <mat-radio-group [(ngModel)]="formData.visibilty" class="form-control" #visibilty="ngModel" name="visibilty">
+            <mat-radio-button class="example-margin" value="Private">Private</mat-radio-button>
+            <mat-radio-button class="example-margin" value="Public">Public</mat-radio-button>
+          </mat-radio-group>
+          <br>
+          <br>
+          <button type="submit" class="btn btn-warning" [disabled]="!registerForm.form.valid" (click)="alert(registerForm.value)">
+            Upload
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

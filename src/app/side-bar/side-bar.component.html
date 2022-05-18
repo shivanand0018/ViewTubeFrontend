@@ -1,0 +1,52 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" 
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === true">
+    
+    <mat-nav-list>
+      
+      <a mat-list-item href="#"><mat-icon>home</mat-icon>Home</a>
+      <a mat-list-item href="#"><mat-icon>explore</mat-icon>Explore</a>
+      <a mat-list-item href="#"><mat-icon>subscriptions</mat-icon>Subscriptions</a>
+      <a mat-list-item href="#"><mat-icon>video_library</mat-icon>Library</a>
+      <a mat-list-item href="#"><mat-icon>history</mat-icon>History</a>
+       <hr>
+       <p>Sign in to like videos,comment and subscribe.</p>
+       <button routerLink="auth/login" mat-flat-button color="warn"><mat-icon>login</mat-icon>Sign in</button>
+      
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a routerLink="" style="color: white;"><span>ViewTube Studio</span></a>
+      <div id='search'>
+      <mat-form-field appearance="fill" >
+        <mat-label>Search</mat-label>
+        <input matInput >
+      </mat-form-field>
+      <mat-icon title="Search">search</mat-icon>
+
+      <mat-icon title="Voice Search">mic</mat-icon>
+    </div>
+    <div id='div'>
+      <mat-icon title="Notifications" id="notifications">notifications</mat-icon>
+      <a routerLink="studio/upload" id="studio" style="color: white;"><mat-icon title="Visit Studio">video_call</mat-icon></a>
+      <mat-icon title="Settings" id="apps">apps</mat-icon>
+      <mat-icon title="Profile" >person</mat-icon>
+    </div>
+      
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <app-chips-bar></app-chips-bar>
+    <app-video-content></app-video-content>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

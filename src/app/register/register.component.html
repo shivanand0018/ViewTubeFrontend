@@ -1,0 +1,13 @@
+<div id="login">
+    <h3>Register here...</h3>
+    <form [formGroup]="form">
+        <label for="username">UserName</label>
+        <input type="text" placeholder="Enter username" formControlName="username"><br>
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password" formControlName="password"><br>
+        <label for="re-password">Password</label>
+        <input type="password" placeholder="Re-enter Password" formControlName="repassword"><br>
+    </form>
+
+    <button color="primary" mat-raised-button (click)=register(form.value)>Register</button>
+</div>

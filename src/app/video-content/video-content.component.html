@@ -1,0 +1,24 @@
+<!-- Display video cards here with 
+    poster-image
+    length of video in hh:mm:ss format
+    2-liner description
+    duration since last published 
+    number of views
+-->
+<div style="display:flex">
+    <div [class.view-image-list]="viewOutlet.isActivated">
+        <mat-card *ngFor="let metadata of video$">
+            <a routerLink="video-view/{{metadata.id}}">
+            <img mat-card-image [src]="metadata.snippet.thumbnails.default.url" alt="viewtubeImage"> <button
+                mat-raised-button color="accent" class="duration">{{metadata.contentDetails.length}}</button>
+            <mat-card-title>{{metadata.snippet.title}}</mat-card-title>
+            <mat-card-subtitle>{{metadata.snippet.channelTitle}}</mat-card-subtitle>
+            <mat-card-subtitle>{{metadata.statistics.viewCount}} views. {{metadata.snippet.relativeTime}}
+            </mat-card-subtitle>
+        </a>
+        </mat-card>
+    </div>
+    <div [class.view-large-image]="viewOutlet.isActivated">
+        <router-outlet #viewOutlet="outlet"></router-outlet>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<form [formGroup]="eventForm">
+    <h1>Event Registration</h1>
+    <div>
+        <label for="title" >Event Title:</label>
+        <input type="text" formControlName="title" class="form-control">
+    </div>
+    <div *ngIf="title.invalid && (title.dirty||title.touched)" class="alert alert-danger">
+        <div *ngIf="title.errors?.['required']">
+            Title is required.
+        </div>
+        <div *ngIf="title.errors?.['minlength']">
+            Title should have minimum of 3 characters.
+        </div>
+    </div>
+
+    <div>
+        <label for="title" class="form-control">Event Title:</label>
+        <input type="date" formControlName="date" class="form-control">
+    </div>
+    <div *ngIf="date.invalid && (date.dirty||date.touched)" class="alert alert-danger">
+        <div *ngIf="date.errors?.['required']">
+            Date is required.
+        </div>
+        <div *ngIf="date.errors?.['d']">
+            Date should not be lesser than the current date.
+        </div>
+    </div>
+    <div>
+        <label for="">Event Start time:</label>
+        <input type="time" formControlName="time" class="form-control">
+    </div>
+    <div *ngIf="time.invalid && (time.dirty||time.touched)" class="alert alert-danger">
+        <div *ngIf="time.errors?.['required']">
+            Time is required.
+        </div>
+    </div>
+    <div>
+        <label for="">Event End Date:</label>
+        <input type="date" formControlName="endDate" class="form-control">
+    </div>
+    <div *ngIf="endDate.invalid && (endDate.dirty||endDate.touched)" class="alert alert-danger">
+        <div *ngIf="endDate.errors?.['required']">
+            End Date is required.
+        </div>
+    </div>
+    <div>
+        <label for="">Event End time:</label>
+        <input type="time" formControlName="endtime" class="form-control">
+    </div>
+    <div *ngIf="endtime.invalid && (endtime.dirty||endtime.touched)" class="alert alert-danger">
+        <div *ngIf="endtime.errors?.['required']">
+            End Time is required.
+        </div>
+    </div>
+    <div>
+        <label for="">Description:</label>
+        <textarea type="text" formControlName="description" class="form-control"></textarea>
+    </div>
+    <mat-chip-list>
+        <p>Guest List :</p>
+        <mat-chip color="accent" selected >Shiva</mat-chip>
+        <mat-chip color="accent" selected>Anand</mat-chip>
+    </mat-chip-list>
+    <button type="submit" [disabled]="!eventForm.valid">Submit</button>
+
+
+</form>
